@@ -297,3 +297,18 @@ body::after {
 .lane-headings {
   top: 12px;
 }
+/* 問題文字改成灰色 */
+.screen-title h1 {
+  color: #5f6368 !important;
+  text-shadow: 0 2px 5px rgba(255, 255, 255, 0.65);
+}
+
+/* 整個投票池加入半透明灰底 */
+.screen-board-area {
+  background: rgba(90, 90, 90, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 28px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.08);
+}
