@@ -257,3 +257,43 @@ body::after {
 .center-page {
   background: transparent !important;
 }
+
+/* 大螢幕：縮小題目並增加球池空間 */
+.screen-header {
+  height: 150px;
+  padding: 20px 28px 12px;
+}
+
+.screen-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.screen-title h1 {
+  max-width: calc(100vw - 430px);
+  margin-bottom: 4px;
+  font-size: clamp(1.8rem, 2.7vw, 3.2rem);
+  line-height: 1.08;
+}
+
+.screen-title .eyebrow {
+  margin-bottom: 5px;
+}
+
+.screen-title > p:last-child {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.screen-title > p strong {
+  font-size: 1.2rem;
+}
+
+.screen-board-area {
+  height: calc(100vh - 150px);
+  padding: 0 18px 18px;
+}
+
+.lane-headings {
+  top: 12px;
+}
