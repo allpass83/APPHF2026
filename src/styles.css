@@ -222,9 +222,32 @@ code { padding: 2px 6px; border-radius: 6px; background: rgba(255,255,255,0.08);
   .ball-board-shell { border-radius: 20px; }
 }
 body {
+  background: none;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
   background:
-    linear-gradient(rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.18)),
-    url('./background.png') center center / cover no-repeat fixed;
+    linear-gradient(rgba(255, 255, 255, 0.30), rgba(255, 255, 255, 0.30)),
+    url('./background.png') center center / cover no-repeat;
+  filter: blur(10px) brightness(0.9);
+  transform: scale(1.05);
+  z-index: -2;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.12);
+  z-index: -1;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
 }
 
 .home-page,
