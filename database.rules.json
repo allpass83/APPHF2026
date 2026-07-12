@@ -1,0 +1,34 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "rooms": {
+      "$roomId": {
+        ".read": "auth != null",
+        ".write": "auth != null && !data.exists() && newData.child('createdBy').val() === auth.uid",
+        ".validate": "!newData.exists() || newData.hasChildren(['createdBy', 'title', 'status', 'createdAt'])",
+        "createdBy": {
+          ".validate": "newData.isString() && (!data.exists() || newData.val() === data.val())"
+        },
+        "title": {
+          ".write": "auth != null && data.parent().child('createdBy').val() === auth.uid",
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 100"
+        },
+        "status": {
+          ".write": "auth != null && data.parent().child('createdBy').val() === auth.uid",
+          ".validate": "newData.val() === 'open' || newData.val() === 'closed'"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "votes": {
+          ".write": "auth != null && data.parent().child('createdBy').val() === auth.uid",
+          "$uid": {
+            ".write": "auth != null && ((!data.exists() && auth.uid === $uid && data.parent().parent().child('status').val() === 'open') || data.parent().parent().child('createdBy').val() === auth.uid)",
+            ".validate": "!newData.exists() || (newData.hasChildren(['choice', 'createdAt']) && (newData.child('choice').val() === '1' || newData.child('choice').val() === '2' || newData.child('choice').val() === '3') && newData.child('createdAt').isNumber())"
+          }
+        }
+      }
+    }
+  }
+}
